@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Pendaftaran Acara OMK</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Pendaftaran Acara OMK</h1>
+        <form name="regis-form" id="regis-form" action="#" method="post">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required>
+
+            <label for="stasi">Asal Stasi:</label>
+            <select id="stasi" name="stasi" required>
+                <option value="">Pilih Stasi</option>
+                <option value="jojog">Jojog</option>
+                <option value="tulusrejo">Tulusrejo</option>
+                <option value="batanghari">Batanghari</option>
+                <option value="selorejo">Selorejo</option>
+                <option value="balekencono">Balekencono</option>
+                <option value="sambikarto">Sambikarto</option>
+                <option value="glagah">Glagah</option>
+            </select>
+
+            <label for="nohp">No HP:</label>
+            <input type="text" id="nohp" name="nohp">
+
+            <label for="janji">Saya berjanji tidak membawa benda yang membahayakan diri!</label>
+            <input type="checkbox" id="janji" name="janji" value="ya" required>Ya
+
+            <label for="pesan">Berikan pesan untuk kami!</label>
+            <textarea id="pesan" name="pesan" rows="4"></textarea>
+
+            <button type="submit">Daftar</button>
+        </form>
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzDxXxcbEoYyBj6dmWpPkSZgGM9BmapWaOEWThw3pvDqKRlxiz11uFVAFjigzgTMIQKYA/exec';
+        const form = document.getElementById('regis-form');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            // Tampilkan loading alert
+            const loadingAlert = Swal.fire({
+                title: 'Sedang diproses...',
+                text: 'Mohon tunggu sebentar.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    if (response.ok) {
+                        // Tutup loading alert dan tampilkan pesan sukses
+                        Swal.close(); // Menutup alert loading
+                        Swal.fire({
+                            title: "Berhasil!!",
+                            text: "Terimakasih bestiee!!!",
+                            icon: "success"
+                        });
+                        form.reset();
+                    } else {
+                        throw new Error('Network response was not ok.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    // Tutup loading alert dan tampilkan pesan error
+                    Swal.close(); // Menutup alert loading
+                    Swal.fire({
+                        title: "Terjadi Kesalahan!",
+                        text: "Pendaftaran gagal. Silakan coba lagi.",
+                        icon: "error"
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('/images/background.jpg') no-repeat center center;
+    color: white;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.container {
+    scroll-behavior: smooth;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Mengubah bayangan agar lebih jelas */
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #f5f5f5;
+    font-size: 26px;
+    position: relative;
+    font-weight: 700;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    text-align: left;
+    font-size: 14px;
+    text-shadow: 2px 2px 10px black;
+    color: #ffffff;
+}
+
+option {
+    background-color: #1e88a1;
+    color: #ffffff; /* Menambahkan warna teks pada option */
+}
+
+input[type="text"],
+textarea,
+select {
+    color: #f7f7f7;
+    width: calc(100% - 20px);
+    background-color: transparent;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s; /* Mengurangi waktu transisi */
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #2193b0;
+    background-color: transparent;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.5); /* Mengubah ukuran checkbox */
+}
+
+button {
+    background-color: #2193b0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #1e88a1;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+#success-message {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #2193b0;
+    background-color: #e0f7fa;
+    color: #00796b;
+    border-radius: 5px;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

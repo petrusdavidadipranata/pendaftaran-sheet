@@ -12,28 +12,39 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+    <style>
+        .table-wrapper {
+            overflow-x: auto;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table {
+            min-width: 600px; /* Set a minimum width for your table */
+        }
+    </style>
 </head>
 
 <body>
     <div class="container mt-4">
         <h1>Data Pendaftaran Acara OMK</h1>
         <button class="btn btn-primary mb-3" onclick="fetchData()">Load Data</button>
-        
-        <table id="data-table" class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                    <th>Timestamp</th>
-                    <th>Nama</th>
-                    <th>Stasi</th>
-                    <th>No HP</th>
-                    <th>Janji</th>
-                    <th>Pesan</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be inserted here -->
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table id="data-table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Nama</th>
+                        <th>Stasi</th>
+                        <th>No HP</th>
+                        <th>Janji</th>
+                        <th>Pesan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
         <div id="stasi-summary" class="mt-4">
             <!-- Total pendaftar berdasarkan stasi akan ditampilkan di sini -->
         </div>
